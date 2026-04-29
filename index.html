@@ -71,17 +71,13 @@
         /* --- HERO SECTION (HEADER) --- */
         #hero {
             height: 100vh;
+            /* REPLACE 'images/banner.jpg' WITH YOUR ACTUAL IMAGE FILE PATH */
             background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('images/banner.jpg'); 
-            background-size: contain;
-            background-position: center center;
-            background-color: #0a0a0a; /* Fills any empty space around the banner */    
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            position: relative;
+            background-size: cover;       /* Makes the image fill the screen */
+            background-position: center;  /* Centers the important part of the image */
+            background-repeat: no-repeat; /* <--- THIS FIXES THE STACKING ISSUE */
         }
+
 
         .hero-content h1 {
             font-size: 5rem;
