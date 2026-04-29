@@ -69,15 +69,19 @@
         .nav-links a:hover { color: var(--dbz-orange); }
 
         /* --- HERO SECTION (HEADER) --- */
-        #hero {
+          #hero {
             height: 100vh;
-            /* REPLACE 'images/banner.jpg' WITH YOUR ACTUAL IMAGE FILE PATH */
             background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('images/banner.jpg'); 
             background-size: cover;       /* Makes the image fill the screen */
             background-position: center;  /* Centers the important part of the image */
             background-repeat: no-repeat; /* <--- THIS FIXES THE STACKING ISSUE */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
         }
-
 
         .hero-content h1 {
             font-size: 5rem;
