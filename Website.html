@@ -272,3 +272,278 @@
 
 </body>
 </html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArokuG | Content Creator</title>
+    <!-- Google Fonts for that Anime/DBZ feel -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --dbz-orange: #ff5e00;
+            --dbz-blue: #00aaff;
+            --dark-bg: #121212;
+            --card-bg: #1e1e1e;
+            --text-light: #f4f4f4;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Bangers', cursive;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            padding: 10px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 3px solid var(--dbz-orange);
+        }
+
+        .nav-logo {
+            height: 65px;
+            width: auto;
+            filter: drop-shadow(0 0 8px rgba(255, 94, 0, 0.7));
+            transition: transform 0.3s ease;
+        }
+
+        .nav-logo:hover { transform: scale(1.05); }
+
+        .nav-links a {
+            margin-left: 20px;
+            font-weight: bold;
+            color: white;
+            position: relative;
+        }
+
+        .nav-links a:hover { color: var(--dbz-orange); }
+
+        /* --- HERO SECTION (HEADER) --- */
+        #hero {
+            height: 100vh;
+            /* REPLACE 'images/banner.jpg' WITH YOUR ACTUAL IMAGE FILE PATH */
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('images/banner.jpg'); 
+            background-size: cover;
+            background-position: center top;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content h1 {
+            font-size: 5rem;
+            margin-bottom: 20px;
+            text-shadow: 4px 4px 0 #000, -2px -2px 0 var(--dbz-orange);
+            animation: pulse 3s infinite alternate;
+        }
+
+        @keyframes pulse {
+            from { text-shadow: 4px 4px 0 #000, -2px -2px 0 var(--dbz-orange); }
+            to { text-shadow: 6px 6px 15px rgba(255,94,0,0.8), -3px -3px 10px var(--dbz-blue); }
+        }
+
+        .cta-btn {
+            padding: 15px 40px;
+            background-color: var(--dbz-orange);
+            color: white;
+            font-family: 'Bangers', cursive;
+            font-size: 1.5rem;
+            border-radius: 5px;
+            border: 2px solid white;
+            box-shadow: 0 0 15px var(--dbz-orange);
+        }
+
+        .cta-btn:hover {
+            background-color: white;
+            color: var(--dbz-orange);
+            transform: scale(1.05);
+        }
+
+        /* --- SECTIONS GENERAL --- */
+        section { padding: 80px 20px; max-width: 1200px; margin: 0 auto; }
+        .section-title { text-align: center; font-size: 3.5rem; margin-bottom: 50px; color: var(--dbz-blue); text-shadow: 2px 2px 4px rgba(0,0,0,0.8); }
+
+        /* --- ART GALLERY --- */
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .art-card { background-color: var(--card-bg); border-radius: 10px; overflow: hidden; transition: transform 0.3s ease; border: 2px solid transparent; }
+        .art-card:hover { transform: translateY(-5px); border-color: var(--dbz-orange); box-shadow: 0 0 20px rgba(255, 94, 0, 0.3); }
+        .art-placeholder { height: 300px; background: #333; display: flex; align-items: center; justify-content: center; color: #777; font-family: 'Bangers'; font-size: 1.5rem; }
+
+        /* --- MUSIC SECTION --- */
+        .music-container { background-color: var(--card-bg); padding: 30px; border-radius: 15px; text-align: center; border-left: 5px solid var(--dbz-blue); }
+
+        /* --- TWITCH CLIPS --- */
+        .clips-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        /* Make Twitch embeds responsive & clean */
+        .clip-card iframe {width: 100%; aspect-ratio: 16 / 9; border-radius: 8px 8px 0 0; background: #000; }
+        .video-placeholder { display: none !important; }
+        .play-icon { font-size: 3rem; color: var(--dbz-orange); }
+
+        /* --- COLLAB FORM --- */
+        .form-container { background-color: var(--card-bg); padding: 40px; border-radius: 15px; max-width: 600px; margin: 0 auto; box-shadow: 0 0 30px rgba(0, 170, 255, 0.1); }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; font-weight: bold; color: var(--dbz-orange); }
+        input, textarea, select { width: 100%; padding: 12px; background-color: #333; border: 1px solid #444; color: white; border-radius: 5px; font-family: 'Roboto', sans-serif; }
+        input:focus, textarea:focus { outline: none; border-color: var(--dbz-blue); box-shadow: 0 0 10px rgba(0, 170, 255, 0.3); }
+        button[type="submit"] { width: 100%; padding: 15px; background-color: var(--dbz-blue); color: white; border: none; font-family: 'Bangers'; font-size: 1.5rem; cursor: pointer; transition: 0.3s; }
+        button[type="submit"]:hover { background-color: var(--dbz-orange); }
+
+        /* --- FOOTER --- */
+        footer { background-color: black; padding: 40px; text-align: center; border-top: 3px solid var(--dbz-blue); }
+        .social-icons a { font-size: 1.5rem; margin: 0 15px; color: white; }
+        .social-icons a:hover { color: var(--dbz-orange); }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            nav { padding: 10px 20px; flex-direction: column; gap: 10px; }
+            .nav-links a { margin: 0 10px; font-size: 0.9rem; }
+            #hero { background-position: center right; }
+            .hero-content h1 { font-size: 3.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <!-- REPLACE 'images/logo.png' WITH YOUR ACTUAL IMAGE FILE PATH -->
+        <img src="images/logo.png" alt="ArokuG Logo" class="nav-logo">
+        <div class="nav-links">
+            <a href="#art">Art</a>
+            <a href="#music">Music</a>
+            <a href="#clips">Clips</a>
+            <a href="#collab">Collab</a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION (HEADER) -->
+    <section id="hero">
+        <div class="hero-content">
+            <h1>Welcome to the Warriors</h1>
+            <p style="font-size: 1.2rem; margin-bottom: 30px;">Art • Music • Gaming • Content Creation</p>
+            <a href="https://www.twitch.tv/arokug01" target="_blank" class="cta-btn">WATCH LIVE ON TWITCH</a>
+        </div>
+    </section>
+
+    <!-- ART SECTION -->
+    <section id="art">
+        <h2 class="section-title">The Art Gallery</h2>
+        <p style="text-align: center; margin-bottom: 30px;">Original character designs and DBZ inspired artwork.</p>
+        
+        <div class="gallery-grid">
+            <div class="art-card"><div class="art-placeholder" style="background: linear-gradient(45deg, #ff5e00, #333);">SSJ ArokuG</div></div>
+            <div class="art-card"><div class="art-placeholder" style="background: linear-gradient(45deg, #00aaff, #333);">Energy Blast Concept</div></div>
+            <div class="art-card"><div class="art-placeholder" style="background: linear-gradient(45deg, #ff0000, #333);">Battle Scene Sketch</div></div>
+        </div>
+    </section>
+
+    <!-- MUSIC SECTION -->
+    <section id="music">
+        <h2 class="section-title">Soundwaves</h2>
+        <div class="music-container">
+            <h3>New Beginnings Mix</h3>
+            <p style="margin-bottom: 20px;">Listen to the latest tracks produced by ArokuG.</p>
+            
+            <!-- SoundCloud Embed -->
+            <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" 
+                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/your-track-id&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false">
+            </iframe>
+            
+            <div style="margin-top: 20px;">
+                <a href="https://soundcloud.com/arin-gardner/sets/new-beginnings" target="_blank" class="cta-btn" style="font-size: 1rem; padding: 10px 20px;">Listen on SoundCloud</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- TWITCH CLIPS SECTION -->
+    <section id="clips">
+        <h2 class="section-title">Best Clips</h2>
+        <div class="clips-grid">
+            <div class="clip-card"><iframe src="https://clips.twitch.tv/embed?clip=SmoggyAstuteMonkeyNomNom-fHXbE2gleifCypjX&parent=localhost" frameborder="0" allowfullscreen="true" scrolling="no" height="378" width="620"></iframe><div style="padding: 15px;"><h3>Himathee Gameplay</h3><p style="color: #888; font-size: 0.9rem;">Cooking on Fortnite!!</p></div></div>
+            <div class="clip-card"><iframe src="https://clips.twitch.tv/embed?clip=FastPiliableReindeerFreakinStinkin-nTdp1nE4y34nvaKP&parent=localhost" frameborder="0" allowfullscreen="true" scrolling="no" height="378" width="620"></iframe><div style="padding: 15px;"><h3>Learning Valorant</h3><p style="color: #888; font-size: 0.9rem;">Full power unleashed.</p></div></div>
+            <div class="clip-card"><iframe src="https://clips.twitch.tv/embed?clip=BoredInspiringGoldfishYouDontSay-Yf5tPcvPqRzC0-ZB&parent=localhost" frameborder="0" allowfullscreen="true" scrolling="no" height="378" width="620"></iframe><div style="padding: 15px;"><h3>Funny Glitch</h3><p style="color: #888; font-size: 0.9rem;">It was just a prank...</p></div></div>
+        </div>
+    </section>
+
+    <!-- COLLABORATION FORM -->
+    <section id="collab">
+        <h2 class="section-title">Collaborate</h2>
+        <div class="form-container">
+            <p style="text-align: center; margin-bottom: 20px;">Want to work together? Fill out the form below.</p>
+            
+            <form id="collabForm" onsubmit="handleFormSubmit(event)">
+                <div class="form-group"><label for="name">Your Name</label><input type="text" id="name" required placeholder="Goku"></div>
+                <div class="form-group"><label for="email">Email Address</label><input type="email" id="email" required placeholder="goku@earth.com"></div>
+                <div class="form-group"><label for="type">Collaboration Type</label>
+                    <select id="type">
+                        <option value="art">Art Commission / Swap</option>
+                        <option value="music">Music Production</option>
+                        <option value="stream">Stream Collaboration</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group"><label for="message">Details</label><textarea id="message" rows="5" required placeholder="Tell me about your idea..."></textarea></div>
+                <button type="submit">SEND MESSAGE</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <h2 style="margin-bottom: 20px;">AROKUG</h2>
+        <div class="social-icons">
+            <a href="https://www.twitch.tv/arokug01" target="_blank">Twitch</a>
+            <a href="https://www.youtube.com/@ArokuG01">YouTube</a>
+            <a href="https://www.instagram.com/arokug01/">Instagram</a>
+            <a href="https://www.tiktok.com/@arokug">Tiktok</a>
+        </div>
+        <p style="margin-top: 20px; color: #666;">&copy; 2023 ArokuG. All Rights Reserved.</p>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        function handleFormSubmit(event) {
+            event.preventDefault(); 
+            const name = document.getElementById('name').value;
+            alert(`Thanks ${name}! Your collaboration request has been sent. I'll get back to you soon.`);
+            document.getElementById('collabForm').reset();
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+
+</body>
+</html>
